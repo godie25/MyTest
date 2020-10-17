@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: Oracle-plugin
+Version: 0.100
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: pandas (==0.24.2)
+Requires-Dist: cx-Oracle
+Requires-Dist: datetime
+
+UNKNOWN
+
+

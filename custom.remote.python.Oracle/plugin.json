@@ -1,0 +1,94 @@
+{
+  "name": "custom.remote.python.Oracle",
+  "version": "0.100",
+  "type": "python",
+  "entity": "CUSTOM_DEVICE",
+  "technologies": [
+    "Bizagi"
+  ],
+  "metricGroup": "tech.Oracle_Database",
+  "favicon": "https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/oracle-512.png",
+  "source": {
+    "package": "Oracle_plugin",
+    "className": "Oracle_Connection",
+    "install_requires": [
+      "pandas==0.24.2", "cx_Oracle","datetime"
+    ],
+    "activation": "Remote"
+  },
+  "properties": [
+    {"key": "QueryName", "type":  "String"},
+    {"key": "server", "type":  "String"},
+    {"key": "Query", "type":  "Textarea"},
+    {"key": "User", "type":  "String"},
+    {"key": "Password", "type":  "Password"},
+    {"key": "Metric_Names", "type":  "Textarea"},
+    {"key": "Condition", "type":  "Textarea"},
+    {"key": "Pointer", "type":  "Textarea"},
+    {"key": "Port", "type": "String"},
+    {"key": "SID", "type": "String"}
+  ],
+  "configUI": {
+    "displayName": "Oracle_Database_Connection",
+    "properties": [
+      {"key": "QueryName", "displayName": "Development Name ","displayOrder": 1,"displayHint": "Please enter name for device naming"},
+      {"key": "server", "displayName":  "Enter IP","displayOrder": 2,"displayHint": "IP"},
+      {"key": "User", "displayName":  "User","displayOrder": 3,"displayHint": "Must enter a valid username"},
+      {"key": "Password", "displayName":  "Password","displayOrder": 4,"displayHint": "Must enter a password"},
+      {"key": "Port", "displayName": "Database Port", "displayOrder": 5,  "displayHint": "Example 1526"},
+      {"key": "SID", "displayName": "Data Base Instance", "displayOrder": 6,"displayHint": "Example: WBRKHMDB1"},
+      {"key": "Query", "displayName":  "Sentence - Query","displayOrder": 7,"displayHint": "Enter one or more valid queries without special characters (separated by pipeline '|')"},
+      {"key": "Metric_Names", "displayName": "Metric Names", "displayOrder": 10,"displayHint": "List Metric Names. Example: TX_Visa, TX_Master, TX_Amex"},
+      {"key": "Condition", "displayName": "Condition to select metrics", "displayOrder": 11,
+      "displayHint": "Enter condition separate by |. Example: <row selection>, <column selection> | <row selection>, <column selection> "},
+      {"key": "Pointer", "displayName": "Pointer to select metrics", "displayOrder": 12, "displayHint": "Enter condition [<selection>, <column selection>]"}
+
+    ]
+  },
+  "metrics": [
+    {
+      "entity": "CUSTOM_DEVICE",
+      "timeseries": {
+        "key": "Metric.Tx",
+        "unit": "Count",
+        "dimensions": ["Metrics"],
+        "displayname": "Numero_Hebras"
+      }
+    }
+
+  ],
+  "ui": {
+        "keymetrics" : [
+      {
+        "key": "Metric.Tx",
+        "displayname": "Total Business Metrics"
+      }
+    ],
+  "charts": [
+            {
+                "group": "Metrics",
+                "title": "Business Metrics",
+				"series": [
+					{
+                        "key": "Metric.Tx",
+                        "displayname": "Metrics",
+                        "seriestype": "Area",
+                        "color": "#002d8d"
+                    }
+				]
+            }
+    ],
+    "keycharts": [
+      {
+        "group": "Total Business Metrics",
+        "title": "Total Business Metrics",
+        "series": [
+          {
+            "key": "Metric.Tx",
+            "displayName": "Total Business Metrics"
+          }
+        ]
+      }
+    ]
+  }
+}
